@@ -12,7 +12,7 @@ jobs:
       - run: |
             commit_ids=$(git log --format="%H" -n 2)
       - run: |
-            for commit_id in $IDS; 
+            for commit_id in $commit_ids; 
               do
                 eval "commit_$i=$commit_id"
                 i=$((i + 1))
