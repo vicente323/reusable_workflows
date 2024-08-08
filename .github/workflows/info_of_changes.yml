@@ -3,20 +3,14 @@ run-name:   Info on push triggered by ${{github.actor}}
 on: [push,workflow_dispatch]
 jobs:
   basic-run:
+    defaults:
+        run:
+          working-directory: ./scripts
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository to the runner
-        uses: actions/checkout@v4  
+        uses: actions/checkout@v4
 
-      - run: |
-            git log --format="%H" -n 2
-      - run: |
-            commit_ids=$(git log --format="%H" -n 2)
-      - run: |
-            for commit_id in $commit_ids; 
-              do
-                eval "commit_$i=$commit_id"
-                i=$((i + 1))
-              done
-      
-      - run: echo "the commits that are going to be evaluated are (HEAD) $commit_1   and $commit_2 " 
+      - name: run info script
+          
+        run: ./info_of_changes.sh
