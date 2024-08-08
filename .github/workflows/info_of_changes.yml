@@ -1,5 +1,5 @@
 name: Info on push
-run-name:   ${{ github.actor }}
+run-name:   Info on push triggered by ${{github.actor}}
 on: [push,workflow_dispatch]
 jobs:
   basic-run:
@@ -8,7 +8,8 @@ jobs:
       - name: Check out the repository to the runner
         uses: actions/checkout@v4  
 
-      - run: echo "-------------"
+      - run: |
+            git log --format="%H" -n 2
       - run: |
             commit_ids=$(git log --format="%H" -n 2)
       - run: |
