@@ -7,5 +7,15 @@ jobs:
     steps:
       - name: Check out the repository to the runner
         uses: actions/checkout@v4  
-        
+
       - run: echo "-------------"
+      - run: |
+            commit_ids=$(git log --format="%H" -n 2)
+      - run: |
+            for commit_id in $IDS; 
+              do
+                eval "commit_$i=$commit_id"
+                i=$((i + 1))
+              done
+      
+      - run: echo "the commits that are going to be evaluated are (HEAD) $commit_1   and $commit_2 " 
