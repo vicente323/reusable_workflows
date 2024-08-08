@@ -1,0 +1,13 @@
+name: hello-world
+run-name:   ${{ github.actor }}
+on: [workflow_dispatch]
+jobs:
+  basic-run:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - run: echo "Hello World :D"
+      - run: echo "${{github.event}}"
+      - run: echo "The branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+    
