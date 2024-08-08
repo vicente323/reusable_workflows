@@ -1,0 +1,11 @@
+name: Info on push
+run-name:   ${{ github.actor }}
+on: [push,workflow_dispatch]
+jobs:
+  basic-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository to the runner
+        uses: actions/checkout@v4  
+        
+      - run: echo "-------------"
