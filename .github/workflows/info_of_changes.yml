@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Check out the repository to the runner
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: run info script
           
